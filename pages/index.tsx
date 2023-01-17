@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import Link from 'next/link'
 import { GetServerSidePropsContext } from "next";
+import Button from './../components/Button/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +19,7 @@ const Home = (props) =>{
         <p>Bienvenida a la Cool Pokedex</p>
         <Link href="/api/pokemon/pikachu">Pikachu</Link>
         <div>{JSON.stringify(props.pokemon)}</div>
+        <Button/>
       </main>
     </>
   );
