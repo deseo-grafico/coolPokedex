@@ -6,7 +6,7 @@ import Button from './../components/Button/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Home = (props) =>{
+const Home = (props: any) =>{
   return (
     <>
       <Head>
