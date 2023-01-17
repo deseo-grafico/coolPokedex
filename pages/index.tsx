@@ -1,8 +1,13 @@
+import Head from "next/head";
+import { Inter } from "@next/font/google";
+import Link from "next/link";
 import Button from "./../components/Button/Button";
+import PokemonMainList from "../components/pokemon/PokemonMainList/PokemonMainList";
+import { GetServerSidePropsContext } from "next/types";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-const Home = (props: any) =>{
+const Home = (props: any) => {
   return (
     <>
       <Head>
@@ -18,8 +23,23 @@ const Home = (props: any) =>{
           awsdasdasd
         </Button>
       </main>
+
+      <PokemonMainList pokemon={props.pokemon} />
     </>
   );
+};
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const pokemon = await fetch(process.env.HOST + "/api/pokemon/all")
+    .then((d) => d.json())
+    .then((d) => d);
+  return {
+    props: {
+      pokemon,
+    },
+  };
 };
 
 export default Home;
