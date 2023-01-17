@@ -1,26 +1,36 @@
 import classNames from "classnames";
-import { stringToIcon } from './../../utils/stringToIcon';
-import {
-  button,
-  buttonFilled,
-  buttonOutlined,
-  buttonRaw,
-  buttonRounded,
-} from "./Button.module.sass";
-const Button = ({ children, clickHandler, buttonType, icon }) => {
-  const buttonClasses = classNames(button, {
-    [`${buttonFilled}`]: buttonType == "filled",
-    [`${buttonOutlined}`]: buttonType == "outlined",
-    [`${buttonRaw}`]: buttonType == "raw",
-    [`${buttonRounded}`]: buttonType == "rounded",
+import { MouseEventHandler } from "react";
+import { stringToIcon } from '../../utils/stringToIcon';
+import styles from "./Button.module.sass";
+
+
+type ButtonType = "filled" | "outlined" | "raw" | "rounded"
+type ButtonAs = "a" | "button" | "span" 
+type ButtonProps = {
+  icon?: string, 
+  buttonType?: ButtonType, 
+  clickHandler?: MouseEventHandler<HTMLElement>,
+  children: JSX.Element | string, 
+  as?: ButtonAs, 
+  href?: string
+}
+
+
+const Button = ({ as, children, clickHandler, buttonType, icon }: ButtonProps) => {
+  const Component = as || "button";
+  const buttonClasses = classNames(styles.button, {
+    [`${styles.buttonFilled}`]: buttonType == "filled",
+    [`${styles.buttonOutlined}`]: buttonType == "outlined",
+    [`${styles.buttonRaw}`]: buttonType == "raw",
+    [`${styles.buttonRounded}`]: buttonType == "rounded",
   });
   const Icon= stringToIcon(icon)
   return (
     <>
-      <button className={buttonClasses} onClick={clickHandler}>
+      <Component className={buttonClasses} onClick={clickHandler}>
         {icon && <span className="icon">{<Icon height={18} />}</span>}
         <span>{children}</span>
-      </button>
+      </Component>
     </>
   );
 };

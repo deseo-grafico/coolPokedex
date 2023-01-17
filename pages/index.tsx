@@ -1,7 +1,4 @@
-import Head from 'next/head'
-import { Inter } from '@next/font/google'
-import Link from 'next/link'
-import Button from './../components/Button/Button'
+import Button from "./../components/Button/Button";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,8 +14,9 @@ const Home = (props: any) =>{
       <main>
         <p>Bienvenida a la Cool Pokedex</p>
         <Link href="/pokemon/pikachu">Pikachu</Link>
-        <div>{JSON.stringify(props.pokemon)}</div>
-        <Button/>
+        <Button as="a" buttonType="outlined">
+          awsdasdasd
+        </Button>
       </main>
     </>
   );
