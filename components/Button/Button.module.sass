@@ -1,0 +1,34 @@
+.button
+    @apply rounded-lg
+    &.buttonFilled
+        @apply bg-black
+        @apply text-white
+        @apply py-1 px-3
+        @apply transition-colors duration-300
+        &:hover
+            @apply bg-black
+    &.buttonOutlined
+        @apply border-2 border-black
+        @apply text-black font-medium
+        @apply py-1 px-3
+        @apply transition-colors duration-300
+        &:hover
+            @apply bg-black
+            @apply text-white
+    &.buttonRaw
+        @apply bg-white
+        @apply text-black
+        @apply rounded-full
+        @apply p-2
+        @apply flex self-auto
+        @apply transition-colors duration-700
+        &:hover
+            @apply bg-black
+    &.buttonRounded
+        @apply bg-black
+        @apply text-white
+        @apply rounded-full
+        @apply p-1
+        @apply transition-colors duration-300
+        &:hover
+            @apply bg-black
