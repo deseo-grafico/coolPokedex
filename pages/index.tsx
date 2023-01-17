@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import Link from 'next/link'
-import { GetServerSidePropsContext } from "next";
 import Button from './../components/Button/Button'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,31 +16,12 @@ const Home = (props: any) =>{
       </Head>
       <main>
         <p>Bienvenida a la Cool Pokedex</p>
-        <Link href="/api/pokemon/pikachu">Pikachu</Link>
+        <Link href="/pokemon/pikachu">Pikachu</Link>
         <div>{JSON.stringify(props.pokemon)}</div>
         <Button/>
       </main>
     </>
   );
-};
-
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const req = context.req;
-  const res = context.res;
-  const params = context.params;
-  const query = context.query;
-  const url = context.resolvedUrl;
-  const locale = context.locale;
-
-  const pokemon = await fetch(`http://localhost:3000/api/pokemon/pikachu`)
-    .then((d) => d.json())
-    .then((d) => d);
-  
-  return {
-    props: {
-      pokemon,
-    },
-  };
 };
 
 export default Home;
