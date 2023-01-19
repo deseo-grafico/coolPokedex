@@ -1,7 +1,7 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, MouseEventHandler } from "react";
 import React from "react";
 
-type IndexContextType = {
+export type IndexContextType = {
   isFiltersActive: boolean;
   windowSize: {
     x: number;
@@ -13,14 +13,14 @@ type IndexContextType = {
 export const IndexContext = createContext<IndexContextType | null>(null);
 
 const IndexContextProvider = ({ children }: any) => {
-  const [isFiltersActive, setIsFiltersActive] = useState(false);
+  let [isFiltersActive, setIsFiltersActive] = useState(false);
   const [windowSize, setWindowSize] = useState({ x: 0, y: 0 });
 
   const toggleFilter = () => {
-    setIsFiltersActive(!setIsFiltersActive);
+    setIsFiltersActive(!isFiltersActive);
   };
 
-  const value = {
+  const value: IndexContextType = {
     isFiltersActive,
     windowSize,
     toggleFilter,
