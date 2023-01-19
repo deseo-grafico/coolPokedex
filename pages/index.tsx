@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "./../components/Button/Button";
 import PokemonMainList from "../components/pokemon/PokemonMainList/PokemonMainList";
 import { GetServerSidePropsContext } from "next/types";
+import FilterScreen from "../components/FilterScreen/FilterScreen";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +18,13 @@ const Home = (props: any) => {
         <link rel="icon" href="/pokedex.png" />
       </Head>
       <main>
-        <p>Bienvenida a la Cool Pokedex</p>
-        <Link href="/pokemon/pikachu">Pikachu</Link>
+        <h1>Cool Pokedex</h1>
+        <FilterScreen active={true}/>
+
+        {/* <Link href="/pokemon/pikachu">Pikachu</Link>
         <Button as="a" buttonType="outlined">
           awsdasdasd
-        </Button>
+        </Button> */}
       </main>
 
       <PokemonMainList pokemon={props.pokemon} />

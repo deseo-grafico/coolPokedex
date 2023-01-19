@@ -29,7 +29,7 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     })
   );
-
+//ORDENAR POKEMON POR ORDEN ALFABÉTICO
   pokemonResponse.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
   res.status(200).json({ pokemon: pokemonResponse });
 };

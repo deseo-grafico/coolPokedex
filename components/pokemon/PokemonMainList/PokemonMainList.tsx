@@ -1,5 +1,10 @@
 import { Box, Grid } from "@mantine/core";
 import React from "react";
+type pokemonGridItem={
+  name: string;
+  picture: string
+};
+
 
 const PokemonMainList = ({ pokemon }: any) => {
   return (
