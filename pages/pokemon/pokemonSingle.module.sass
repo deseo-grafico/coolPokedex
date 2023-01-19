@@ -1,0 +1,80 @@
+.pokemonContainer
+    @apply flex flex-col gap-16 items-center
+    @apply text-zinc-600
+    .topContent
+        @apply flex flex-col gap-8
+        .picture
+            @apply w-48 mx-auto	
+            img
+                @apply w-full h-full object-cover
+        .pokemonCtas
+            @apply flex gap-16
+            .shinify
+                @apply flex flex-col-reverse gap-2
+                span
+                    @apply text-zinc-400 uppercase
+                a
+            .evolve
+                @apply flex flex-col-reverse gap-2
+                span
+                    @apply text-zinc-400 uppercase
+                a
+            .swapGender
+                @apply flex flex-col-reverse gap-2
+                span
+                    @apply text-zinc-400 uppercase
+                a 
+
+    .middleContent
+        .pokemonName
+            @apply text-4xl font-bold text-zinc-800
+
+    .bottomContent
+        @apply flex flex-col gap-16 items-center
+        @apply pt-12 pb-32 px-16 mx-6
+        @apply bg-zinc-50
+        @apply rounded-t-3xl
+        .mainInfoContainer
+            @apply flex gap-16
+            .weight
+                @apply pr-16 border-r-[1px] border-zinc-400
+                @apply flex flex-col items-center gap-2
+                .title
+                    @apply text-2xl font-medium text-zinc-800
+                span
+            .gender
+                @apply pr-16 border-r-[1px] border-zinc-400
+                @apply flex flex-col items-center gap-2
+                .title
+                    @apply text-2xl font-medium text-zinc-800
+                span
+            .height
+                @apply flex flex-col items-center gap-2
+                .title
+                    @apply text-2xl font-medium text-zinc-800
+                span
+        .abilitiesContainer
+            @apply flex flex-col gap-2 items-center
+            .title
+                @apply text-2xl font-medium text-zinc-800
+            .abilitiesContent
+                @apply flex gap-4
+                .abilityItem
+        .descriptionContainer
+            @apply flex flex-col gap-2 items-center
+            .title
+                @apply text-2xl font-medium text-zinc-800
+            .descriptionContent
+                @apply max-w-prose text-center
+        .evolutionContainer
+            @apply flex flex-col gap-2 items-center
+            .title
+                @apply text-2xl font-medium text-zinc-800
+            .evolutionContent
+                @apply flex gap-4
+                img
+                span
+
+
+.backHome
+    @apply fixed bottom-4 left-2/4
