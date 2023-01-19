@@ -25,7 +25,7 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const pokemonData = {
     name: pokemon.name,
-    width: pokemon.width,
+    weight: pokemon.weight,
     height: pokemon.height,
     picture: pokemon.sprites.front_default,
     abilities,
