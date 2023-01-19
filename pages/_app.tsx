@@ -1,8 +1,8 @@
 import "../styles/main.sass";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { MantineProvider } from '@mantine/core';
-
+import { MantineProvider } from "@mantine/core";
+import IndexContextProvider from "../contexts/indexContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,13 +18,13 @@ export default function App({ Component, pageProps }: AppProps) {
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: 'light',
+          colorScheme: "light",
         }}
       >
-        <Component {...pageProps} />
-
+        <IndexContextProvider>
+          <Component {...pageProps} />
+        </IndexContextProvider>
       </MantineProvider>
-      
     </>
   );
 }
