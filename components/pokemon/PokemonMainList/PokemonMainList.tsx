@@ -1,15 +1,18 @@
+import { Box, Grid } from "@mantine/core";
 import React from "react";
 
 const PokemonMainList = ({ pokemon }: any) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <Grid className="hola" gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50}>
       {pokemon.pokemon.map((pokemonItem: any, i: number) => (
-        <article key={i} className="bg-gray-100">
-          <h4>{pokemonItem.name}</h4>
-          <img src={pokemonItem.picture} />
-        </article>
+        <Grid.Col span={4} md={6} lg={3} key={i} >
+          <Box bg="indigo">
+            <h4>{pokemonItem.name}</h4>
+            <img src={pokemonItem.picture} />
+          </Box>
+        </Grid.Col>
       ))}
-    </div>
+    </Grid>
   );
 };
 

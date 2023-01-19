@@ -1,20 +1,34 @@
-import { createContext, useState, useContext } from "react"
-import React from 'react'
+import { createContext, useState, useContext } from "react";
+import React from "react";
 
-export const IndexContext = createContext
+type IndexContextType = {
+  isFiltersActive: boolean;
+  windowSize: {
+    x: number;
+    y: number;
+  };
+  toggleFilter: () => void;
+};
 
-const IndexContextProvider = ({ children }:any) => {
-    const [isFiltersActive, setIsFiltersActive] = useState(false)
+export const IndexContext = createContext<IndexContextType | null>(null);
 
-    const value={
-        isFiltersActive
-    }
+const IndexContextProvider = ({ children }: any) => {
+  const [isFiltersActive, setIsFiltersActive] = useState(false);
+  const [windowSize, setWindowSize] = useState({ x: 0, y: 0 });
 
-    return (
-        <IndexContext.Provider value={value}>
-            {children}
-        </IndexContext.Provider>
-    )
-}
+  const toggleFilter = () => {
+    setIsFiltersActive(!setIsFiltersActive);
+  };
 
-export default IndexContextProvider
+  const value = {
+    isFiltersActive,
+    windowSize,
+    toggleFilter,
+  };
+
+  return (
+    <IndexContext.Provider value={value}>{children}</IndexContext.Provider>
+  );
+};
+
+export default IndexContextProvider;
