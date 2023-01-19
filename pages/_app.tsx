@@ -1,6 +1,8 @@
 import "../styles/main.sass";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { MantineProvider } from "@mantine/core";
+import IndexContextProvider from "../contexts/indexContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,7 +13,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/pokedex.png" />
       </Head>
-      <Component {...pageProps} />
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{
+          /** Put your mantine theme override here */
+          colorScheme: "light",
+        }}
+      >
+        <IndexContextProvider>
+          <Component {...pageProps} />
+        </IndexContextProvider>
+      </MantineProvider>
     </>
   );
 }
