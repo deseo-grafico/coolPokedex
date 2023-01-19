@@ -10,7 +10,7 @@ type ButtonProps = {
   icon?: string, 
   buttonType?: ButtonType, 
   clickHandler?: MouseEventHandler<HTMLElement>,
-  children: JSX.Element | string, 
+  children?: JSX.Element | string, 
   as?: ButtonAs, 
   href?: string
 }

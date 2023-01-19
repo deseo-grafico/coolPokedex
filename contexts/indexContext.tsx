@@ -7,7 +7,7 @@ export type IndexContextType = {
     x: number;
     y: number;
   };
-  toggleFilter: ()=>void;
+  toggleFilter: () => void;
 };
 
 export const IndexContext = createContext<IndexContextType | null>(null);
@@ -18,10 +18,9 @@ const IndexContextProvider = ({ children }: any) => {
 
   const toggleFilter = () => {
     setIsFiltersActive(!isFiltersActive);
-    
   };
 
-  const value:IndexContextType = {
+  const value: IndexContextType = {
     isFiltersActive,
     windowSize,
     toggleFilter,

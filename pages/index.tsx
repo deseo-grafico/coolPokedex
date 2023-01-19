@@ -5,10 +5,13 @@ import Button from "./../components/Button/Button";
 import PokemonMainList from "../components/pokemon/PokemonMainList/PokemonMainList";
 import { GetServerSidePropsContext } from "next/types";
 import FilterScreen from "../components/FilterScreen/FilterScreen";
+import { useContext } from "react";
+import { IndexContext } from "../contexts/indexContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = (props: any) => {
+  let { isFiltersActive, toggleFilter } = useContext(IndexContext)!;
   return (
     <>
       <Head>
@@ -19,12 +22,14 @@ const Home = (props: any) => {
       </Head>
       <main>
         <h1>Cool Pokedex</h1>
-        <FilterScreen active={true}/>
+        <Button as="a" buttonType="outlined" clickHandler={toggleFilter}>
+          Filtrar
+        </Button>
+        {isFiltersActive?<FilterScreen active={true}/>:null}
+        
 
-        {/* <Link href="/pokemon/pikachu">Pikachu</Link>
-        <Button as="a" buttonType="outlined">
-          awsdasdasd
-        </Button> */}
+        
+        
       </main>
 
       <PokemonMainList pokemon={props.pokemon} />
