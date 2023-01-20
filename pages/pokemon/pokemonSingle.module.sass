@@ -1,50 +1,106 @@
 .pokemonContainer
-    @apply flex flex-col gap-16 items-center
+    @apply flex flex-col gap-14 items-center
     @apply text-zinc-600
+    @apply m-6 mb-0
+
+    @media (max-width: 1100px)
+        @apply flex flex-col gap-12 items-center
+            
+    @media (max-width: 768px)
+        @apply flex flex-col gap-10 items-center
     .topContent
-        @apply flex flex-col gap-8
+        @apply flex flex-col gap-2
         .picture
             @apply w-48 mx-auto	
             img
                 @apply w-full h-full object-cover
         .pokemonCtas
             @apply flex gap-16
+
+            @media (max-width: 1100px)
+                @apply flex gap-10
+            
+            @media (max-width: 768px)
+                @apply flex gap-4
             .shinify
-                @apply flex flex-col-reverse gap-2
-                span
+                @apply flex flex-col-reverse items-center gap-2
+                @apply mr-0
+
+                @media (max-width: 1100px)
+                    @apply mr-0
+                
+                @media (max-width: 768px)
+                    @apply mr-2
+                .title
                     @apply text-zinc-400 uppercase
                 a
+                    @apply text-primary-400
             .evolve
-                @apply flex flex-col-reverse gap-2
-                span
+                @apply flex flex-col-reverse items-center gap-2
+                .title
                     @apply text-zinc-400 uppercase
                 a
+                    @apply text-primary-400
             .swapGender
-                @apply flex flex-col-reverse gap-2
-                span
+                @apply flex flex-col-reverse items-center gap-2
+                .title
                     @apply text-zinc-400 uppercase
-                a 
+                a
+                    @apply text-primary-400
 
     .middleContent
+        @apply mb-0
+
+        @media (max-width: 1100px)
+            @apply mb-1
+            
+        @media (max-width: 768px)
+            @apply mb-2
         .pokemonName
-            @apply text-4xl font-bold text-zinc-800
+            @apply text-4xl font-bold text-zinc-800 capitalize
 
     .bottomContent
         @apply flex flex-col gap-16 items-center
-        @apply pt-12 pb-32 px-16 mx-6
-        @apply bg-zinc-50
+        @apply pt-12 pb-32 px-16
+        @apply bg-primary-50
         @apply rounded-t-3xl
+
+        @media (max-width: 1100px)
+            @apply flex flex-col gap-14 items-center
+            @apply pt-12 px-8 pb-28
+            
+        @media (max-width: 768px)
+            @apply flex flex-col gap-12 items-center
+            @apply pt-10 px-4 pb-24
         .mainInfoContainer
             @apply flex gap-16
+
+            @media (max-width: 1100px)
+                @apply flex gap-10
+            
+            @media (max-width: 768px)
+                @apply flex gap-4
             .weight
                 @apply pr-16 border-r-[1px] border-zinc-400
                 @apply flex flex-col items-center gap-2
+
+                @media (max-width: 1100px)
+                    @apply pr-10
+            
+                @media (max-width: 768px)
+                    @apply pr-4
                 .title
                     @apply text-2xl font-medium text-zinc-800
                 span
             .gender
                 @apply pr-16 border-r-[1px] border-zinc-400
                 @apply flex flex-col items-center gap-2
+
+                @media (max-width: 1100px)
+                    @apply pr-10
+            
+                @media (max-width: 768px)
+                    @apply pr-4
                 .title
                     @apply text-2xl font-medium text-zinc-800
                 span
@@ -71,10 +127,12 @@
             .title
                 @apply text-2xl font-medium text-zinc-800
             .evolutionContent
-                @apply flex gap-4
+                @apply flex gap-6 items-center
+
+                @media (max-width: 1100px)
+                    @apply flex gap-4 items-center
+            
+                @media (max-width: 768px)
+                    @apply flex gap-2 items-center
                 img
                 span
-
-
-.backHome
-    @apply fixed bottom-4 left-2/4
