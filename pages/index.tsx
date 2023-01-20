@@ -6,27 +6,24 @@ import { GetServerSidePropsContext } from "next/types";
 import FilterScreen from "../components/FilterScreen/FilterScreen";
 import { useContext } from "react";
 import { IndexContext } from "../contexts/indexContext";
+import { Flex } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = (props: any) => {
   let { isFiltersActive, toggleFilter } = useContext(IndexContext)!;
   return (
-    <>
+    <Flex direction="column" gap="md" align="center">
       <main>
         <h1>Cool Pokedex</h1>
         <Button as="a" buttonType="outlined" clickHandler={toggleFilter}>
           Filtrar
         </Button>
-        {isFiltersActive?<FilterScreen active={true}/>:null}
-        
-
-        
-        
+        {isFiltersActive ? <FilterScreen active={true} /> : null}
       </main>
 
       <PokemonMainList pokemon={props.pokemon} />
-    </>
+    </Flex>
   );
 };
 
