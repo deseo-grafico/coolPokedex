@@ -93,9 +93,9 @@ const Pokemon = (props: PokemonProps) => {
             <div className={PokemonSingleStyles.abilitiesContent}>
               {props.pokemon.pokemonData.abilities.map(
                 (pokemonAbilities: any, i: number) => (
-                  <div key={i} className={PokemonSingleStyles.abilityItem}>
+                  <Chip key={i}>
                     {pokemonAbilities.name}
-                  </div>
+                  </Chip>
                 )
               )}
             </div>
