@@ -4,6 +4,7 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import IndexContextProvider from "../contexts/indexContext";
 import BottomNav from "../components/BottomNav/BottomNav";
+import PokemonSingleContextProvider from "../contexts/pokemonSingleContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -24,7 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       >
         <IndexContextProvider>
-          <Component {...pageProps} />
+          <PokemonSingleContextProvider>
+            <Component {...pageProps} />
+          </PokemonSingleContextProvider>
         </IndexContextProvider>
       </MantineProvider>
     </>

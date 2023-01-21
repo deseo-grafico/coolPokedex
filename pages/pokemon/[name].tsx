@@ -3,18 +3,23 @@ import Button from "../../components/Button/Button";
 import PokemonSingleStyles from "./pokemonSingle.module.sass";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Chip from "../../components/Chips/Chip";
-import { Flex } from "@mantine/core";
+import { pokemonSingleContext } from "../../contexts/pokemonSingleContext";
+import { useContext } from "react";
+
 
 type PokemonProps = {
   pokemon: any;
 };
 
 const Pokemon = (props: PokemonProps) => {
+  const { isShinyActive, buttonShiny } = useContext(pokemonSingleContext)!;
+  const src = isShinyActive ? props.pokemon.pokemonData.pictureShiny : props.pokemon.pokemonData.picture;
+  
   return (
     <div className={PokemonSingleStyles.pokemonContainer}>
       <div className={PokemonSingleStyles.topContent}>
         <div className={PokemonSingleStyles.picture}>
-          <img src={props.pokemon.pokemonData.picture} alt="Pokemon picture" />
+          <img src={src} alt="Pokemon picture" />
         </div>
         <div className={PokemonSingleStyles.pokemonCtas}>
           <div className={PokemonSingleStyles.shinify}>
@@ -25,6 +30,7 @@ const Pokemon = (props: PokemonProps) => {
               icon="PlusIcon"
               buttonSize="large"
               children={""}
+              clickHandler={buttonShiny}
             />
           </div>
 
