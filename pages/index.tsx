@@ -1,5 +1,4 @@
 import { Inter } from "@next/font/google";
-import Link from "next/link";
 import Button from "./../components/Button/Button";
 import PokemonMainList from "../components/pokemon/PokemonMainList/PokemonMainList";
 import { GetServerSidePropsContext } from "next/types";
