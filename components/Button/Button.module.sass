@@ -8,16 +8,21 @@
         @apply transition-colors duration-300
         &:hover
             @apply bg-primary-600
+        &.disable
+            @apply bg-primary-100
     &.buttonOutlined
         @apply border-2 border-primary-400
         @apply text-primary-400 font-medium
         @apply py-1 px-3
         @apply transition-colors duration-300
-        .icon
-            svg
-                @apply text-primary-400
         &:hover
             @apply bg-primary-50
+        &.disable
+            @apply border-2 border-primary-100
+            @apply text-primary-100
+            @apply cursor-not-allowed
+            &:hover
+                @apply bg-transparent
     &.buttonRaw
         @apply bg-white
         @apply text-primary-400
@@ -27,6 +32,8 @@
         @apply transition-colors duration-700
         &:hover
             @apply bg-primary-50
+        &.disable
+            @apply text-primary-100
     &.buttonRounded
         @apply bg-primary-400
         @apply text-white font-medium
@@ -35,5 +42,7 @@
         @apply transition-colors duration-300
         &:hover
             @apply bg-primary-600
+        &.disable
+            @apply bg-primary-100
     &.buttonLarge
         @apply py-4 px-8
