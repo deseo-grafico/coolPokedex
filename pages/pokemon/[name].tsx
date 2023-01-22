@@ -13,13 +13,12 @@ type PokemonProps = {
 
 const Pokemon = (props: PokemonProps) => {
   const { isShinyActive, buttonShiny } = useContext(pokemonSingleContext)!;
-  const src = isShinyActive ? props.pokemon.pokemonData.pictureShiny : props.pokemon.pokemonData.picture;
   
   return (
     <div className={PokemonSingleStyles.pokemonContainer}>
       <div className={PokemonSingleStyles.topContent}>
         <div className={PokemonSingleStyles.picture}>
-          <img src={src} alt="Pokemon picture" />
+          {isShinyActive ? <img src={props.pokemon.pokemonData.pictureShiny} alt="Pokemon Shiny picture" /> : <img src={props.pokemon.pokemonData.picture} alt="Pokemon picture" />}
         </div>
         <div className={PokemonSingleStyles.pokemonCtas}>
           <div className={PokemonSingleStyles.shinify}>

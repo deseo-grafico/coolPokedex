@@ -14,13 +14,11 @@ const PokemonSingleContextProvider = ({ children }: any) => {
 
   const buttonShiny = () => {
     setIsShinyActive(!isShinyActive);
-    console.log("shiny!")
-    console.log(isShinyActive)
   };
 
   const value: pokemonSingleContextType = {
     buttonShiny,
-    isShinyActive: false,
+    isShinyActive,
   };
 
   return (
