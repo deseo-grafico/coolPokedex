@@ -24,7 +24,7 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }),
 
-    // type
+    // type (ABANDONADO)
     // pokemon.types.map(async (type: any) => {
     //   const typeData = await fetch(type.type.url)
     //     .then((d) => d.json())
