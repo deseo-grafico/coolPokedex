@@ -1,11 +1,10 @@
 import { GetServerSidePropsContext } from "next";
 import Button from "../../components/Button/Button";
 import PokemonSingleStyles from "./pokemonSingle.module.sass";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Chip from "../../components/Chips/Chip";
 import { pokemonSingleContext } from "../../contexts/pokemonSingleContext";
 import { useContext } from "react";
-
 
 type PokemonProps = {
   pokemon: any;
@@ -13,13 +12,36 @@ type PokemonProps = {
 };
 
 const Pokemon = (props: PokemonProps) => {
-  const { isShinyActive, buttonShiny } = useContext(pokemonSingleContext)!;
-  
+  const { isShinyActive, buttonShiny, buttonSwapGender, isSwapGenderActive } =
+    useContext(pokemonSingleContext)!;
+
   return (
     <div className={PokemonSingleStyles.pokemonContainer}>
       <div className={PokemonSingleStyles.topContent}>
         <div className={PokemonSingleStyles.picture}>
-          {isShinyActive ? <img src={props.pokemon.pokemonData.pictureShiny} alt="Pokemon Shiny picture" /> : <img src={props.pokemon.pokemonData.picture} alt="Pokemon picture" />}
+          {isShinyActive ? (
+            <img
+              src={props.pokemon.pokemonData.pictureShiny}
+              alt="Pokemon Shiny picture"
+            />
+          ) : isSwapGenderActive ? (
+            props.pokemon.pokemonData.pictureFemale == null ? (
+              <img
+                src={props.pokemon.pokemonData.picture}
+                alt="Pokemon picture"
+              />
+            ) : (
+              <img
+                src={props.pokemon.pokemonData.pictureFemale}
+                alt="Pokemon Female picture"
+              />
+            )
+          ) : (
+            <img
+              src={props.pokemon.pokemonData.picture}
+              alt="Pokemon picture"
+            />
+          )}
         </div>
         <div className={PokemonSingleStyles.pokemonCtas}>
           <div className={PokemonSingleStyles.shinify}>
@@ -53,13 +75,25 @@ const Pokemon = (props: PokemonProps) => {
 
           <div className={PokemonSingleStyles.swapGender}>
             <span className={PokemonSingleStyles.title}>Swap Gender</span>
-            <Button
-              as="a"
-              buttonType="outlined"
-              icon="PlusIcon"
-              buttonSize="large"
-              children={""}
-            />
+            {props.pokemon.pokemonData.pictureFemale == null ? (
+              <Button
+                as="a"
+                buttonType="outlined"
+                icon="PlusIcon"
+                buttonSize="large"
+                children={""}
+                buttonState="disable"
+              />
+            ) : (
+              <Button
+                as="a"
+                buttonType="outlined"
+                icon="PlusIcon"
+                buttonSize="large"
+                children={""}
+                clickHandler={buttonSwapGender}
+              />
+            )}
           </div>
         </div>
       </div>

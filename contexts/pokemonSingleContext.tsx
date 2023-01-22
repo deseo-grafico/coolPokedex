@@ -3,7 +3,9 @@ import React from "react";
 
 export type pokemonSingleContextType = {
   isShinyActive: boolean;
+  isSwapGenderActive: boolean
   buttonShiny: () => void;
+  buttonSwapGender: () => void;
 };
 
 export const pokemonSingleContext =
@@ -11,14 +13,21 @@ export const pokemonSingleContext =
 
 const PokemonSingleContextProvider = ({ children }: any) => {
   const [isShinyActive, setIsShinyActive] = useState(false);
+  const [isSwapGenderActive, setIsSwapGenderActive] = useState(false);
 
   const buttonShiny = () => {
     setIsShinyActive(!isShinyActive);
   };
 
+  const buttonSwapGender = () => {
+    setIsSwapGenderActive(!isSwapGenderActive);
+  };
+
   const value: pokemonSingleContextType = {
     buttonShiny,
     isShinyActive,
+    buttonSwapGender,
+    isSwapGenderActive,
   };
 
   return (

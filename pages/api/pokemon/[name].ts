@@ -22,6 +22,7 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
    ** ... también he probado a hacer los bucles fuera de la promesa y luego llamarlos dentro de la promesa en un array y nada...
    *
   **/
+  await Promise.all(
     //abilities
     pokemon.abilities.map(async (ability: any) => {
       const abilityData = await fetch(ability.ability.url)
@@ -50,6 +51,7 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
     height: pokemon.height,
     picture: pokemon.sprites.front_default,
     pictureShiny: pokemon.sprites.front_shiny,
+    pictureFemale: pokemon.sprites.front_female,
     abilities,
     species: pokemon.species.url,
   };
