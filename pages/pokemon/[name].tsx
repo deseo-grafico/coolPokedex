@@ -33,7 +33,12 @@ const Pokemon = (props: PokemonProps) => {
             />
           </div>
 
-          <div className={PokemonSingleStyles.evolve}>
+          {/*
+           **
+           **** Pokemon Evolution descartada. Demasiado complejo
+           **
+           */}
+          {/* <div className={PokemonSingleStyles.evolve}>
             <span className={PokemonSingleStyles.title}>Evolve</span>
             <Button
               as="a"
@@ -42,7 +47,7 @@ const Pokemon = (props: PokemonProps) => {
               buttonSize="large"
               children={""}
             />
-          </div>
+          </div> */}
 
           <div className={PokemonSingleStyles.swapGender}>
             <span className={PokemonSingleStyles.title}>Swap Gender</span>
@@ -64,6 +69,25 @@ const Pokemon = (props: PokemonProps) => {
       </div>
 
       <div className={PokemonSingleStyles.bottomContent}>
+        {/*
+         **
+         **** Pokemon Evolution descartada. Demasiado complejo
+         **
+         */}
+        {/* <div className={PokemonSingleStyles.evolutionContainer}>
+          <div className={PokemonSingleStyles.title}>Evolution</div>
+          <div className={PokemonSingleStyles.evolutionContent}>
+            <img
+              src={props.pokemon.pokemonData.picture}
+              alt="Pokemon evolution 1"
+            />
+            <ArrowRightIcon className="h-5 w-5 text-primary-400" />
+            <img src="#" alt="Pokemon evolution 2" />
+            <ArrowRightIcon className="h-5 w-5 text-primary-400" />
+            <img src="#" alt="Pokemon evolution 3" />
+          </div>
+        </div> */}
+
         <div className={PokemonSingleStyles.mainInfoContainer}>
           <div className={PokemonSingleStyles.weight}>
             <div className={PokemonSingleStyles.title}>Weight</div>
