@@ -12,7 +12,16 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
     .then((d) => d.json())
     .then((d) => d);
 
-  await Promise.all(
+
+  /**
+   * 
+   ** Problemas con las promesas:
+   ** Tal y como está la PokáApi para poder indicar el type del pokemon hay que recorrer el array como pasa con las abilities,
+   ** sin embargo, al meter 2 argumentos en en Promise.all da error...
+   ** ... he probado con diferentes tipos: Promise.allSettled, etc... y nada...
+   ** ... también he probado a hacer los bucles fuera de la promesa y luego llamarlos dentro de la promesa en un array y nada...
+   *
+  **/
     //abilities
     pokemon.abilities.map(async (ability: any) => {
       const abilityData = await fetch(ability.ability.url)
@@ -42,7 +51,7 @@ const controller = async (req: NextApiRequest, res: NextApiResponse) => {
     picture: pokemon.sprites.front_default,
     pictureShiny: pokemon.sprites.front_shiny,
     abilities,
-    // types,
+    species: pokemon.species.url,
   };
   
   res.status(200).json({

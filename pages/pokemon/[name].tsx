@@ -9,6 +9,7 @@ import { useContext } from "react";
 
 type PokemonProps = {
   pokemon: any;
+  specie: any;
 };
 
 const Pokemon = (props: PokemonProps) => {
@@ -98,8 +99,13 @@ const Pokemon = (props: PokemonProps) => {
           </div>
           <div className={PokemonSingleStyles.gender}>
             <div className={PokemonSingleStyles.title}>Type</div>
-            <div className="pokemonTypeContainer">
+            <div className="pokemonTypeContainer text-red-400 text-center">
               Pokemon Type
+              {/*
+               **
+               **** Problemas con las promesas --> Ir a "api/pokemon/[name].ts" para ver los problemas.
+               **
+               */}
               {/* {props.pokemon.pokemonData.types.map(
                 (pokemonTypes: any, i: number) => (
                   <span key={i}>{pokemonTypes.name}</span>
@@ -132,16 +138,21 @@ const Pokemon = (props: PokemonProps) => {
             aliquam modi culpa odit quibusdam veniam alias ex error ipsam rem
             aspernatur pariatur.
           </div>
-        </div>
-
-        <div className={PokemonSingleStyles.evolutionContainer}>
-          <div className={PokemonSingleStyles.title}>Evolution</div>
-          <div className={PokemonSingleStyles.evolutionContent}>
-            <img src="#" alt="Pokemon evolution" />
-            <ArrowRightIcon className="h-5 w-5 text-primary-400" />
-            <img src="#" alt="Pokemon evolution" />
-            <ArrowRightIcon className="h-5 w-5 text-primary-400" />
-            <img src="#" alt="Pokemon evolution" />
+          <div className="text text-red-400 text-center">
+            {props.pokemon.pokemonData.species} . flavor_text_entries .
+            flavor_text
+            {/*
+             **
+             **** Problemas diversos:
+             **** 1. Error en la petición a la api "api/pokemon-specie/[name].ts",
+             **** 2. Error en getServerSideProps. Al llamar a los datos de la ruta de arriba, lanza un error diciendo que solo se aceptan rutas absolutas.
+             **
+             */}
+            {/* {props.specie.pokemonSpecieData.texts.flavor_text_entries.map(
+            (texts: any, i: number) => (
+              <Chip key={i}>{texts.flavor_text}</Chip>
+            )
+          )} */}
           </div>
         </div>
       </div>
@@ -157,9 +168,16 @@ export const getServerSideProps = async (
   const pokemon = await fetch(process.env.HOST + "/api/pokemon/" + params!.name)
     .then((d) => d.json())
     .then((d) => d);
+
+  const specie = await fetch(
+    process.env.HOST + "/api/pokemon-species/" + params!.name
+  )
+    .then((d) => d.json())
+    .then((d) => d);
   return {
     props: {
       pokemon,
+      specie,
     },
   };
 };
