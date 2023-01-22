@@ -5,11 +5,13 @@ import styles from "./Button.module.sass";
 
 
 type ButtonType = "filled" | "outlined" | "raw" | "rounded"
+type ButtonState = "default" | "disable"
 type ButtonAs = "a" | "button" | "span" | "div"
 type ButtonSize = "large" | "base" | "small"
 type ButtonProps = {
   icon?: string, 
-  buttonType?: ButtonType, 
+  buttonType?: ButtonType,
+  buttonState?: ButtonState,
   clickHandler?: MouseEventHandler<HTMLElement>,
   children?: JSX.Element | string, 
   as?: ButtonAs, 
@@ -18,7 +20,7 @@ type ButtonProps = {
 }
 
 
-const Button = ({ as, children, clickHandler, buttonType, icon, buttonSize }: ButtonProps) => {
+const Button = ({ as, children, clickHandler, buttonType, buttonState, icon, buttonSize }: ButtonProps) => {
   const Component = as || "button";
   const buttonClasses = classNames(styles.button, {
     [`${styles.buttonFilled}`]: buttonType == "filled",
@@ -26,6 +28,7 @@ const Button = ({ as, children, clickHandler, buttonType, icon, buttonSize }: Bu
     [`${styles.buttonRaw}`]: buttonType == "raw",
     [`${styles.buttonRounded}`]: buttonType == "rounded",
     [`${styles.buttonLarge}`]: buttonSize == "large",
+    [`${styles.disable}`]: buttonState == "disable",
   });
   const Icon= stringToIcon(icon)
   return (
