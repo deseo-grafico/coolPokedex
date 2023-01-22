@@ -1,10 +1,11 @@
 import { RangeSlider } from "@mantine/core";
 import React, { useContext } from "react";
-import { IndexContext} from "../../contexts/indexContext";
+import { IndexContext } from "../../contexts/indexContext";
 import Button from "../Button/Button";
+import Filter from "../Filter/Filter";
 
 const FilterScreen = ({ props }: any) => {
-  let {toggleFilter } = useContext(IndexContext)!;
+  let { toggleFilter } = useContext(IndexContext)!;
 
   return (
     <>
@@ -32,6 +33,17 @@ const FilterScreen = ({ props }: any) => {
             { value: 100, label: "8" },
           ]}
         />
+      </div>
+      <div className="filtroTipos">
+        <h2>Tipos</h2>
+        
+        <Filter filterActive={false} clickHandler={toggleFilter} filterType={"normal"} icon={'XMarkIcon'}/>
+      </div>
+      <div className="filtroGender">
+        <h2>Tipos</h2>
+      </div>
+      <div className="filtroGender">
+        <h2>Tipos</h2>
       </div>
     </>
   );
